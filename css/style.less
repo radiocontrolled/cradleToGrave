@@ -1,0 +1,413 @@
+@import "https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Cabin:400,400italic";
+// @import url("profile.min.css");
+
+@import url("variables.less");
+
+/* 
+  CSS RESET
+  http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* BEGIN STYLES */
+
+
+/* Mixins - Google Fonts */ 
+.serif {
+  font-family: 'Sorts Mill Goudy', serif;
+
+}
+.sansSerif {
+  font-family: 'Cabin', sans-serif;
+}
+
+.italic {
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  color: @darkDarkGrey;
+  line-height: 1.5;
+  font-size: 16px;
+  .sansSerif;
+}
+
+
+h1 {
+  color: @red;
+  font-size: 4em;
+  margin: 0; 
+  text-align: center;
+  .serif;
+
+}
+
+h2 {
+  // color: @darkDarkGrey; 
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  font-style: italic;
+  margin-top: 0;
+  .serif;
+  line-height: 1;
+}
+
+h2.first {
+  color: @white!important;
+}
+
+p {
+  padding-bottom: 0.5em;
+}
+
+.stuck {
+  margin: 0;
+  height: auto;
+  position: fixed;
+  top: 0; 
+  z-index: 10000;
+  padding-top: 2em;
+}
+
+.table,
+#runningTotal {
+  font-size: 0.60em;
+  margin-left: 2em;  
+  color: lighten(@lightGrey, 10%);
+}
+
+
+#runningTotal {
+  padding-left: 0.5em;
+}
+
+.table > tbody > tr > td, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > td, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > thead > tr > th {
+  border-color: lighten(@lightGrey, 20%);
+}
+
+
+table.hidden {
+  display: none; 
+}
+
+table.visible {
+  display: inline;
+}
+
+.fullHeight {
+  height:100vh!important;
+} 
+
+/* center vertically and horizontally */ 
+.parent {
+  position: relative!important;
+}
+
+.child {
+  position: absolute!important;
+  top: 50%!important;
+  left: 50%!important;
+  transform: translate(-50%, -50%)!important;
+}
+
+#stage-birth h2, 
+#stage-school h2, 
+#stage-university h2,
+#stage-workingLife h2, 
+#stage-familyLife h2, 
+#stage-retirement h2 {
+  margin-bottom: 0;
+  text-align: right;
+  font-size: 1.5em;
+  padding-top: 2em;
+}
+
+section#hero,
+#hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url("../assets/hero.jpg");
+  background-size:cover;
+  position:relative;
+  color: @white!important; /* test */ 
+}
+
+section#breakdown {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url("../assets/breakdown.jpg");
+  background-size:cover;
+  position:relative;
+  color: @white!important; /* test */ 
+}
+
+section#hero p.small {
+  color: @white!important;
+  font-size: 75%;
+  padding-top: 1em;
+  .italic;
+}
+
+div.lead {
+  font-size: 1em;
+  padding: 1em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+section div {
+  font-size: 1.15em;
+  text-align: justify;
+}
+
+table#table-breakdown {
+  font-size: 0.25em;
+}
+
+section#methodology {
+  background: @darkDarkGrey; 
+  color: @white;
+}
+
+section#methodology h3,
+section#breakdown h3 {
+  color: @white;
+  text-align: right;
+  margin-top: 2em;
+}
+
+section#methodology p {
+  font-size: 0.60em;
+}
+
+section.report, 
+#callToAction  {
+  background: @red;
+  color: @white;
+  padding: 4em 0 6em 0;
+  text-align: center;
+}
+
+section.report h2 {
+  font-size: 2em;
+  color: @white;
+}
+
+section.report h3 {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+}
+
+div.report-buttons {
+  margin: 0 auto; 
+  text-align: center;
+}
+
+a.reportButton,
+a.methodologyButton {
+  border: 1px solid @white;
+  display: inline-block;
+  padding: 1em 3em;
+  background: @red;
+  color: @white;
+  margin: 1em;
+  font-size: 0.75em;
+  .sansSerif;
+  text-decoration: none;  
+}
+
+a.reportButton:hover,
+a.reportButton:focus,
+a.reportButton:active, 
+a.methodologyButton:hover,
+a.methodologyButton:focus, 
+a.methodologyButton:active{
+  background: @white;
+  color: @red;
+}
+
+footer {
+  background: @red;
+  padding: 1em;
+  color: @white;
+}
+
+/* visualisation */
+
+
+// .birth, 
+// .school, 
+// .university,
+// .workingLife, 
+// .familyLife, 
+// .retirement {
+//   opacity: 0;
+// }
+
+// .invisible {
+//   border: none;
+// }
+
+
+
+/* Smallest devices - phones below 768px */
+
+@media (max-width: 768px) {
+
+
+    
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  div.lead {
+    width: 100%;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0;
+  }
+
+  .child {
+    width: 90%;
+  }
+
+  .fullHeightReset {
+    // height: auto!important;
+  }
+
+  div.inner p {
+    font-size: 14px;
+  }
+
+  div.lead .small {
+    font-size: 100%;
+  }
+
+  div.inner {
+    width: initial;
+  }
+
+  section div {
+    padding: initial;
+    font-size: 1em;
+  }
+
+  section div.child {
+    padding: 0;
+    top: 40%!important;
+  }
+
+  div.report-buttons {
+    padding-top: 0;
+  }
+
+  section.report h2,
+  section.report h3 {
+    margin-bottom: 0;
+  }
+  
+  /* table that should appear after retirement */
+
+  .table, #runningTotal {
+    margin-left: 0;
+  }
+
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px){
+
+  div.inner p {
+    font-size: 1em;
+  }
+
+  h2, #methodology h3 {
+    font-size: 2.5em!important;
+  }
+
+  p {
+    // font-size: 2em!important;
+  }
+
+  section#methodology p {
+    font-size: 1em!important;
+  }
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #methodology p,
+  #breakdown p {
+    font-size: 1em!important;
+  }
+
+
+}
+
+
+

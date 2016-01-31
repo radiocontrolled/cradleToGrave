@@ -1,0 +1,27 @@
+{
+  "name" : "Total bribes",
+  "value" : 35491510, 
+  "children" : [
+    { "name" : "Birth", 
+      "value" : 1406155, 
+      "children" : [
+        {"name" : "Certification of Personal Documents (Marriage, Divorce...) - 298", "value" : 19071},
+        {"name" : "Identity card - 95", "value" : 1015000},
+        {"name" : "Passport - 97", "value" : 50000},
+        {"name" : "Civil Register Authentication - 64", "value" : 48750},
+        {"name" : "Hospital Admission - 71", "value" : 273333 }
+      ]
+    },
+    { "name" : "School", 
+      "value" : 2077083, 
+      "children" : [
+        {"name" : "Identity card - 95", "value" : 1015000},
+        {"name" : "Passport - 97", "value" : 50000},
+        {"name" : "Civil Register Authentication - 64", "value" : 48750},
+        {"name" : "Hospital Admission - 71", "value" : 273333 },
+        {"name" : "Diploma Certification - 36", "value" : 15000 },
+        {"name" : "Results of Official Examinations - 203", "value" : 675000 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "Stage":"Birth",
+    "Procedure":"Certification of Personal Documents (Marriage, Divorce...) - 298",
+    "Avg":1406155
+  },
+  
+  {
+    "Stage":"School",
+    "Procedure":"Identity card - 95",
+    "Avg":2077083
+  },
+  
+  {
+    "Stage":"University",
+    "Procedure":"Subscription to Lebanese University - 39",
+    "Avg":1356747
+  },
+  
+  {
+    "Stage":"Work",
+    "Procedure":"Judicial Record - 96",
+    "Avg":12510402
+  },
+  {
+    "Stage":"Family",
+    "Procedure":"Housing Loan - 124",
+    "Avg":15548302
+  }
+  ,
+ 
+  {
+    "Stage":"Retirement",
+    "Procedure":"renew the new passport - 275",
+    "Avg":2592821
+  }
+]

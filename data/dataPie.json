@@ -1,0 +1,262 @@
+[
+  {
+    "Stage":"birth",
+    "Procedure":"Certification of Personal Documents (Marriage, Divorce...) - 298",
+    "Avg":19071
+  },
+  {
+    "Stage":"birth",
+    "Procedure":"Identity card - 95",
+    "Avg":1015000
+  },
+  {
+    "Stage":"birth",
+    "Procedure":"Passport - 97",
+    "Avg":50000
+  },
+  {
+    "Stage":"birth",
+    "Procedure":"Civil Register Authentication - 64",
+    "Avg":48750
+  },
+  {
+    "Stage":"birth",
+    "Procedure":"Hospital Admission - 71",
+    "Avg":273333
+  },
+  {
+    "Stage":"school",
+    "Procedure":"Identity card - 95",
+    "Avg":1015000
+  },
+  {
+    "Stage":"school",
+    "Procedure":"Passport - 97",
+    "Avg":50000
+  },
+  {
+    "Stage":"school",
+    "Procedure":"Hospital Admission - 71",
+    "Avg":273333
+  },
+  {
+    "Stage":"school",
+    "Procedure":"Civil Register Authentication - 64",
+    "Avg":48750
+  },
+  {
+    "Stage":"school",
+    "Procedure":"Diploma Certification - 36",
+    "Avg":15000
+  },
+  {
+    "Stage":"school",
+    "Procedure":"Results of Official Examinations - 203",
+    "Avg":675000
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Subscription to Lebanese University - 39",
+    "Avg":155000
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Hospital Admission - 71",
+    "Avg":273333
+  },
+  {
+    "Stage":"university",
+    "Procedure":"renew the new passport - 275",
+    "Avg":226667
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Driving Licence - 83",
+    "Avg":155339
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Car Registration - 87",
+    "Avg":128511
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Driving Licence Replacement - 174",
+    "Avg":150000
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Fines: Parking Ticket - 85",
+    "Avg":74500
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Diploma Certification - 36",
+    "Avg":15000
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Civil Register Authentication - 64",
+    "Avg":48750
+  },
+  {
+    "Stage":"university",
+    "Procedure":"Mecanique - 84",
+    "Avg":129647
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Judicial Record - 96",
+    "Avg":20000
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Cadastre - 205",
+    "Avg":2628993
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Cleaning of Judicial Record - 419",
+    "Avg":5250000
+  },
+  {
+    "Stage":"work",
+    "Procedure":"License for Commercial Enterprise - 163",
+    "Avg":35000
+  },
+  {
+    "Stage":"work",
+    "Procedure":"renew the new passport - 275",
+    "Avg":226667
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Fines: Parking Ticket - 85",
+    "Avg":74500
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Car Registration - 87",
+    "Avg":128511
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Civil Register Authentication - 64",
+    "Avg":48750
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Social Security Paperwok - 115",
+    "Avg":3818333
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Driving Licence Replacement - 174",
+    "Avg":150000
+  },
+  {
+    "Stage":"work",
+    "Procedure":"Mecanique - 84",
+    "Avg":129647
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Housing Loan - 124",
+    "Avg":650000
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Housing Permit - 147",
+    "Avg":10160000
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Certification of Personal Documents (Marriage, Divorce...) - 298",
+    "Avg":19071
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Civil Register Authentication - 64",
+    "Avg":48750
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Permit to issue an approval for foreigners' competency licence holders - 472",
+    "Avg":375000
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Redemption request a financial guarantee (certificate of deposit) - 312",
+    "Avg":1500000
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Hospital Admission - 71",
+    "Avg":273333
+  },
+  {
+    "Stage":"family",
+    "Procedure":"renew the new passport - 275",
+    "Avg":226667
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Social Security Family Procedures - 116",
+    "Avg":1760000
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Water Request - 44",
+    "Avg":107500
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Electricity Request - 4",
+    "Avg":223833
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Fines: Parking Ticket - 85",
+    "Avg":74500
+  },
+  {
+    "Stage":"family",
+    "Procedure":"Mecanique - 84",
+    "Avg":129647
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"Hospital Admission - 71",
+    "Avg":273333
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"renew the new passport - 275",
+    "Avg":226667
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"Driving Licence Replacement - 174",
+    "Avg":150000
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"Civil Register Authentication - 64",
+    "Avg":48750
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"Certification of Personal Documents (Marriage, Divorce...) - 298",
+    "Avg":19071
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"Permit to issue an approval for foreigners' competency licence holders - 472",
+    "Avg":375000
+  },
+  {
+    "Stage":"retirement",
+    "Procedure":"Redemption request a financial guarantee (certificate of deposit) - 312",
+    "Avg":1500000
+  }
+]
