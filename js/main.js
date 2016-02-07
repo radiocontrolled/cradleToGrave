@@ -54,7 +54,7 @@
     // min/max values for horozontal scale
     min = d3.min(dataCircle, function(d) { return d.Avg; });
     max = d3.max(dataCircle, function(d) { return d.Avg; });
-    visualiseCircles();
+    // visualiseCircles();
   });
 
   d3.json("data/dataPie.json", function(error, json) {
@@ -73,7 +73,7 @@
       return (a[1] > b[1]) ? -1 : 1;
     }
   }
-      
+
   function visualiseCircles () {
 
     xScale = d3.scale.linear()
@@ -277,15 +277,15 @@
           
           switch(swiper.activeIndex) {
             case 1 : 
-              d3.select("circle.Birth").style("fill", "#989798");
+              // d3.select("circle.Birth").style("fill", "#989798");
               d3.select("text.Birth").classed("show", true);
               visualiseBarChart("birth");
 
             break; 
 
             case 2 : 
-              d3.select("circle.School").style("fill", "#989798");
-              d3.select("circle.Birth").style("fill", "#7FB9E6");
+              // d3.select("circle.School").style("fill", "#989798");
+              // d3.select("circle.Birth").style("fill", "#7FB9E6");
 
               remove();
               visualiseBarChart("school");
@@ -296,8 +296,8 @@
             break; 
 
             case 3 : 
-              d3.select("circle.University").style("fill", "#989798");
-              d3.select("circle.School").style("fill", "#7FB9E6");
+              // d3.select("circle.University").style("fill", "#989798");
+              // d3.select("circle.School").style("fill", "#7FB9E6");
 
               remove();
               visualiseBarChart("university");
@@ -307,8 +307,8 @@
             break; 
 
             case 4 : 
-              d3.select("circle.Work").style("fill", "#989798");
-              d3.select("circle.University").style("fill", "#7FB9E6");
+              // d3.select("circle.Work").style("fill", "#989798");
+              // d3.select("circle.University").style("fill", "#7FB9E6");
 
               remove();
               visualiseBarChart("work");
@@ -318,8 +318,8 @@
             break;
 
             case 5 : 
-              d3.select("circle.Family").style("fill", "#989798"); 
-              d3.select("circle.Work").style("fill", "#7FB9E6");
+              // d3.select("circle.Family").style("fill", "#989798"); 
+              // d3.select("circle.Work").style("fill", "#7FB9E6");
 
               remove();
               visualiseBarChart("family");
@@ -329,8 +329,8 @@
             break; 
 
             case 6 : 
-              d3.select("circle.Retirement").style("fill", "#989798");
-              d3.select("circle.Family").style("fill", "#7FB9E6");
+              // d3.select("circle.Retirement").style("fill", "#989798");
+              // d3.select("circle.Family").style("fill", "#7FB9E6");
 
               remove();
               visualiseBarChart("retirement");
@@ -352,8 +352,8 @@
           switch(swiper.activeIndex) {
           
             case 1 : // birth
-              d3.select("circle.Birth").style("fill", "#989798");
-              d3.select("circle.School").style("fill", "#7FB9E6"); 
+              // d3.select("circle.Birth").style("fill", "#989798");
+              // d3.select("circle.School").style("fill", "#7FB9E6"); 
 
               visualiseBarChart("birth");
               d3.select("text.School").classed("show", false);
@@ -364,8 +364,8 @@
             break; 
 
             case 2 : // school
-              d3.select("circle.School").style("fill", "#989798");
-              d3.select("circle.University").style("fill", "#7FB9E6"); 
+              // d3.select("circle.School").style("fill", "#989798");
+              // d3.select("circle.University").style("fill", "#7FB9E6"); 
 
               d3.select("text.University").classed("show", false);
 
@@ -374,9 +374,9 @@
 
             break; 
 
-            case 3 : // uni
-              d3.select("circle.University").style("fill", "#989798");
-              d3.select("circle.Work").style("fill", "#7FB9E6"); 
+            // case 3 : // uni
+            //   d3.select("circle.University").style("fill", "#989798");
+            //   d3.select("circle.Work").style("fill", "#7FB9E6"); 
 
               d3.select("text.Work").classed("show", false);
 
@@ -386,8 +386,8 @@
             break; 
            
             case 4 : // work 
-              d3.select("circle.Work").style("fill", "#989798");
-              d3.select("circle.Family").style("fill", "#7FB9E6"); 
+              // d3.select("circle.Work").style("fill", "#989798");
+              // d3.select("circle.Family").style("fill", "#7FB9E6"); 
 
 
               d3.select("text.Family").classed("show", false);
@@ -398,8 +398,8 @@
             break; 
 
             case 5 : // family 
-              d3.select("circle.Family").style("fill", "#989798");
-              d3.select("circle.Retirement").style("fill", "#7FB9E6"); 
+              // d3.select("circle.Family").style("fill", "#989798");
+              // d3.select("circle.Retirement").style("fill", "#7FB9E6"); 
 
               remove();
               visualiseBarChart("family");
