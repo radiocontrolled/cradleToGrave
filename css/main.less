@@ -17,7 +17,7 @@ article svg{
 
 g.circle-wrap {
   fill: #7FB9E6;
-  stroke: #d91f2b;
+  // stroke: #d91f2b;
   stroke-width: 1px; 
 }
 
@@ -29,24 +29,35 @@ text.Family,
 text.Retirement {
   fill: @darkGrey;
   stroke: none;
+  display: none;
 }
 
-// .portrait text.Birth,
-// .portrait text.School,
-// .portrait text.University,
-// .portrait text.Work,
-// .portrait text.Family,
-// .portrait text.Retirement {
-//   display: none;
-// }
+#method {
+  background: @darkDarkGrey;
+    align-items: flex-start;
+  color: @white;
+  margin: 0 auto;
+}
 
+#methodInner p {
+  align-items: flex-start;
+  color: @white;
+}
 
+.portrait text.Birth,
+.portrait text.School,
+.portrait text.University,
+.portrait text.Work,
+.portrait text.Family,
+.portrait text.Retirement {
+  display: none;
+}
 
 
 svg {
   margin: 0 auto;
   display: block;
-
+  // background: #eee;
 }
 
 .contain {
@@ -64,4 +75,45 @@ svg {
   background: transparent;
   align-items: top!important;
   border: none;
+  display: block;
 }
+
+.swiper-slide .lead p {
+  color: @white;
+  text-align: center;
+}
+.swiper-slide p{
+  width: 50%;
+  color: @darkDarkGrey;
+  text-align: justify;
+  margin: 0 auto;
+}
+
+.swiper-slide .lead p{
+  width: 100%;
+}
+
+#method h2,
+h2.life-stage {
+  display: inline-block;
+  font-size: 1.25em;
+}
+
+@media (max-width: 600px) {
+  .swiper-slide p{
+    font-size: 12px;
+    text-align: justify;
+    width: 100%;
+  }
+  .swiper-slide {
+    padding-bottom: 0;
+    padding-top: 0.25em;
+  }
+  h2.life-stage {
+    font-size: 1.25em;
+  }
+
+}
+
+ 
+

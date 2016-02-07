@@ -2,8 +2,11 @@
 
   "use strict";
 
-  var height, width, svg, data, min, max, xScale, bubbleScale, svgCircles;
+  var height, width, svg, dataCircle, min, max, xScale, bubbleScale, svgCircles, dataRect, processedDataForRect, rect, rectScale,
+  labelAvg, labelProcedure;
   var body = jQuery("body");
+
+  var format = d3.format("0,000");
 
   function getViewportDimensions() { 
 
@@ -44,18 +47,34 @@
   }
 
   d3.json("data/dataPieSummary.json", function(error, json) {
-    if (error) return console.warn(error);
-    data = json;
+    if (error) console.warn(error);
+    dataCircle = json;
     drawSvg();
 
     // min/max values for horozontal scale
-    min = d3.min(data, function(d) { return d.Avg; });
-    max = d3.max(data, function(d) { return d.Avg; });
-
-    visualise();
+    min = d3.min(dataCircle, function(d) { return d.Avg; });
+    max = d3.max(dataCircle, function(d) { return d.Avg; });
+    visualiseCircles();
   });
-    
-  function visualise() {
+
+  d3.json("data/dataPie.json", function(error, json) {
+    if (error) console.warn(error);
+    dataRect = json; 
+    // visualiseBarChart("birth");
+
+  });
+
+  // http://stackoverflow.com/questions/16096872/how-to-sort-2-dimensional-array-by-column-value
+  function sortFunction(a, b) {
+    if (a[1] === b[1]) {
+      return 0;
+    }
+    else {
+      return (a[1] > b[1]) ? -1 : 1;
+    }
+  }
+      
+  function visualiseCircles () {
 
     xScale = d3.scale.linear()
       .domain([5,0])
@@ -69,16 +88,15 @@
       .classed("circle-wrap", true);
 
     svgCircles.selectAll("circle")
-      .data(data)
+      .data(dataCircle)
       .enter()
       .append("g")
-
       .append("circle")
       .attr({
         "cx" : function(d,i) {
           return xScale(i) + (width * 0.10);
         },
-        "cy" : "10%",
+        "cy" : "92%",
         'r' : function(d) {
           return bubbleScale(d.Avg);
         }, 
@@ -87,29 +105,114 @@
         }
       })
 
-    svgCircles.selectAll("text")
-      .data(data)
-      .enter()
-      .append("text")
-      .classed("circle-text", true)
-      .attr({
-        "x" : function(d,i) {
-          return xScale(i)+ (width * 0.10);
-        },
-        "y" : "20%",
-        "text-anchor" : "middle",
-        "class" : function (d) {
-          return d.Stage ;
-        }
+    // svgCircles.selectAll("text")
+    //   .data(dataCircle)
+    //   .enter()
+    //   .append("text")
+    //   .classed("circle-text", true)
+    //   .attr({
+    //     "x" : function(d,i) {
+    //       // return xScale(i)+ (width * 0.10);
+    //       return width /2;
+    //     },
+    //     "y" : "5%",
+    //     "text-anchor" : "middle",
+    //     "class" : function (d) {
+    //       return d.Stage;
+    //     }
 
-      })
-      .text(function(d){
-        return d.Stage;
-      });
-
+    //   })
+    //   .text(function(d){
+    //     return d.Stage + ": " + format(d.Avg) + "ل.ل";
+    //   });
     }
 
+    function remove (stage) {
+      d3.selectAll("rect").remove();
+      d3.selectAll(".average").remove();
+      d3.selectAll(".labelProcedure").remove();
+    }
 
+    function visualiseBarChart (stage) {
+    
+      function processData (stage) {
+        processedDataForRect = [];
+        for(var i = 0; i < dataRect.length; i++) {
+          if(dataRect[i].Stage === stage) {
+            var innerArray = [];
+            innerArray.push(dataRect[i].Stage);
+            innerArray.push(dataRect[i].Avg);
+            innerArray.push(dataRect[i].Procedure);
+            processedDataForRect.push(innerArray);
+          } 
+        }
+      }
+
+      processData(stage);
+
+      // get the lowest and highest bribe amount 
+      var arrayOfAverageBribes = processedDataForRect.map(function(x){return x[1]})
+      var min = d3.min(arrayOfAverageBribes);
+      var max = d3.max(arrayOfAverageBribes);
+
+      processedDataForRect = processedDataForRect.sort(sortFunction);
+
+      console.log("stage: " + stage);
+      console.log("dataset: " + processedDataForRect);
+
+
+      rectScale = d3.scale.linear()
+        .domain([min, max])
+        .range([(width*0.01), (width*0.90)])
+
+      rect = svg.selectAll("rect")
+        .data(processedDataForRect);
+        
+        // .append("g")
+      
+      rect
+        .enter()
+        .append("rect")
+        .attr("transform", "translate(" + (width * 0.05) + "," + (height * 0.23)  + ")")
+        .attr({
+          "class" : function(d) {
+            return d[0];
+          },
+          "height": 5,
+          "y": function(d,i) {
+            return i * (height/20); 
+          }, 
+          "fill" : "#686868",
+          "width" : 0
+        })
+        .transition()
+        .duration(1000)
+        .attr({"width": function(d) {
+            return rectScale(d[1]);
+          }
+        })
+
+      labelProcedure = svg.selectAll("text.labelProcedure")
+        .data(processedDataForRect)
+        .enter()
+        .append("text")
+        .classed("labelProcedure", true)
+        .attr("transform", "translate(" + 0 + "," + (height * 0.23)  + ")")
+        .text(function(d,i){
+          return d[2] + ", " + format(d[1]);
+        })
+        .attr({
+          "fill" : "#989798",
+          "font-size" : "10px",
+          "x" : function(d) {
+            return width * 0.05;
+          },
+          "y": function(d,i) {
+            return i * (height/20) - 4; 
+          }
+      });
+          
+    }
 
     d3.select(window).on('resize', resize);
 
@@ -122,8 +225,6 @@
 
       bubbleScale
         .range([5,25]);    
-
-  
 
       svgCircles.selectAll("circle")
         .attr({
@@ -144,9 +245,23 @@
             "y" : "20%",
             "text-anchor" : "middle"
           });
+    
+      rectScale
+        .range([(width*0.01), (width*0.90)])
 
-
-
+      rect = svg.selectAll("g rect")
+        .attr({
+          "y": function(d,i) {
+            return i * (height/15); 
+          }, 
+          "width" : 0
+        })
+        .transition()
+        .duration(1000)
+        .attr({"width": function(d) {
+            return rectScale(d[1]);
+          }
+        })
     }
 
 
@@ -161,29 +276,68 @@
         onSlideChangeEnd: function() {
           
           switch(swiper.activeIndex) {
-            case 1 : d3.select("circle.Birth").style("fill", "#d91f2b");
+            case 1 : 
+              d3.select("circle.Birth").style("fill", "#989798");
+              d3.select("text.Birth").classed("show", true);
+              visualiseBarChart("birth");
 
             break; 
 
-            case 2 : d3.select("circle.School").style("fill", "#d91f2b");
-                     d3.select("circle.Birth").style("fill", "#7FB9E6");
+            case 2 : 
+              d3.select("circle.School").style("fill", "#989798");
+              d3.select("circle.Birth").style("fill", "#7FB9E6");
 
+              remove();
+              visualiseBarChart("school");
+
+
+              d3.select("text.School").classed("show", true);
+              d3.select("text.Birth").classed("show", false);
             break; 
 
-            case 3 : d3.select("circle.University").style("fill", "#d91f2b");
-                     d3.select("circle.School").style("fill", "#7FB9E6");
+            case 3 : 
+              d3.select("circle.University").style("fill", "#989798");
+              d3.select("circle.School").style("fill", "#7FB9E6");
+
+              remove();
+              visualiseBarChart("university");
+
+              d3.select("text.University").classed("show", true);
+              d3.select("text.School").classed("show", false);
             break; 
 
-            case 4 : d3.select("circle.Work").style("fill", "#d91f2b");
-                    d3.select("circle.University").style("fill", "#7FB9E6");
+            case 4 : 
+              d3.select("circle.Work").style("fill", "#989798");
+              d3.select("circle.University").style("fill", "#7FB9E6");
+
+              remove();
+              visualiseBarChart("work");
+    
+              d3.select("text.Work").classed("show", true);
+              d3.select("text.University").classed("show", false);
             break;
 
-            case 5 : d3.select("circle.Family").style("fill", "#d91f2b"); 
-                    d3.select("circle.Work").style("fill", "#7FB9E6");
+            case 5 : 
+              d3.select("circle.Family").style("fill", "#989798"); 
+              d3.select("circle.Work").style("fill", "#7FB9E6");
+
+              remove();
+              visualiseBarChart("family");
+
+              d3.select("text.Family").classed("show", true);
+              d3.select("text.Work").classed("show", false);
             break; 
 
-            case 6 : d3.select("circle.Retirement").style("fill", "#d91f2b");
-                    d3.select("circle.Family").style("fill", "#7FB9E6");
+            case 6 : 
+              d3.select("circle.Retirement").style("fill", "#989798");
+              d3.select("circle.Family").style("fill", "#7FB9E6");
+
+              remove();
+              visualiseBarChart("retirement");
+
+              d3.select("text.Retirement").classed("show", true);
+              d3.select("text.Family").classed("show", false);
+
             break; 
 
             default: 
@@ -198,28 +352,60 @@
           switch(swiper.activeIndex) {
           
             case 1 : // birth
-              d3.select("circle.Birth").style("fill", "#d91f2b");
+              d3.select("circle.Birth").style("fill", "#989798");
               d3.select("circle.School").style("fill", "#7FB9E6"); 
+
+              visualiseBarChart("birth");
+              d3.select("text.School").classed("show", false);
+
+              remove();
+              visualiseBarChart("birth");
+
             break; 
 
             case 2 : // school
-              d3.select("circle.School").style("fill", "#d91f2b");
+              d3.select("circle.School").style("fill", "#989798");
               d3.select("circle.University").style("fill", "#7FB9E6"); 
+
+              d3.select("text.University").classed("show", false);
+
+              remove();
+              visualiseBarChart("school");
+
             break; 
 
             case 3 : // uni
-              d3.select("circle.University").style("fill", "#d91f2b");
+              d3.select("circle.University").style("fill", "#989798");
               d3.select("circle.Work").style("fill", "#7FB9E6"); 
+
+              d3.select("text.Work").classed("show", false);
+
+              remove();
+              visualiseBarChart("university");
+
             break; 
            
             case 4 : // work 
-              d3.select("circle.Work").style("fill", "#d91f2b");
+              d3.select("circle.Work").style("fill", "#989798");
               d3.select("circle.Family").style("fill", "#7FB9E6"); 
+
+
+              d3.select("text.Family").classed("show", false);
+
+              remove();
+              visualiseBarChart("work");
+
             break; 
 
             case 5 : // family 
-              d3.select("circle.Family").style("fill", "#d91f2b");
+              d3.select("circle.Family").style("fill", "#989798");
               d3.select("circle.Retirement").style("fill", "#7FB9E6"); 
+
+              remove();
+              visualiseBarChart("family");
+
+              d3.select("text.Retirement").classed("show", false);
+
             break; 
 
             case 6 : // retirement
