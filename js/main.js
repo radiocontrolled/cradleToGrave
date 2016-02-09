@@ -157,8 +157,8 @@
 
       processedDataForRect = processedDataForRect.sort(sortFunction);
 
-      console.log("stage: " + stage);
-      console.log("dataset: " + processedDataForRect);
+      // console.log("stage: " + stage);
+      // console.log("dataset: " + processedDataForRect);
 
 
       rectScale = d3.scale.linear()
