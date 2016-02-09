@@ -1,21 +1,6 @@
-To complete: 
+DEMO
 
-https://medium.com/@c_behrens/enter-update-exit-6cafc6014c36#.q5yyemnul
-
-
-LABELS 
-- if on mobile, only show the one viewing 
-
-
-- Bubble life span
-- Bar chart that updates with each slide
-
-
-- "Find yourself in the data" (ideally, showing a histogram)
-
-- Bubble pie chart (the outtake)
-
-
+http://radiocontrolled.github.io/cradleToGrave
 
 Histogram. 
 http://bl.ocks.org/mbostock/3048450
