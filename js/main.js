@@ -182,7 +182,7 @@
           "y": function(d,i) {
             return i * (height/20); 
           }, 
-          "fill" : "#686868",
+          "fill" : "#d91f2b",
           "width" : 0
         })
         .transition()
