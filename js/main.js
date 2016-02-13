@@ -3,7 +3,8 @@
   "use strict";
 
   var height, width, svg, dataCircle, min, max, xScale, bubbleScale, svgCircles, dataRect, processedDataForRect, rect, rectScale,
-  labelAvg, labelProcedure;
+  labelAvg, labelProcedure, colourScale;
+
   var body = jQuery("body");
 
   var format = d3.format("0,000");
@@ -46,6 +47,8 @@
       });
   }
 
+
+
   d3.json("data/dataPieSummary.json", function(error, json) {
     if (error) console.warn(error);
     dataCircle = json;
@@ -54,6 +57,8 @@
     // min/max values for horozontal scale
     min = d3.min(dataCircle, function(d) { return d.Avg; });
     max = d3.max(dataCircle, function(d) { return d.Avg; });
+
+
     // visualiseCircles();
   });
 
@@ -105,26 +110,6 @@
         }
       })
 
-    // svgCircles.selectAll("text")
-    //   .data(dataCircle)
-    //   .enter()
-    //   .append("text")
-    //   .classed("circle-text", true)
-    //   .attr({
-    //     "x" : function(d,i) {
-    //       // return xScale(i)+ (width * 0.10);
-    //       return width /2;
-    //     },
-    //     "y" : "5%",
-    //     "text-anchor" : "middle",
-    //     "class" : function (d) {
-    //       return d.Stage;
-    //     }
-
-    //   })
-    //   .text(function(d){
-    //     return d.Stage + ": " + format(d.Avg) + "ل.ل";
-    //   });
     }
 
     function remove (stage) {
@@ -167,9 +152,11 @@
 
       rect = svg.selectAll("rect")
         .data(processedDataForRect);
-        
-        // .append("g")
-      
+
+      colourScale = d3.scale.linear()
+        .domain([min,max])
+        .range(["#d91f2b","#6c0f15"]);
+
       rect
         .enter()
         .append("rect")
@@ -182,7 +169,9 @@
           "y": function(d,i) {
             return i * (height/20); 
           }, 
-          "fill" : "#d91f2b",
+          "fill" : function(d,i) {
+            return colourScale(d[1]);
+          },
           "width" : 0
         })
         .transition()
