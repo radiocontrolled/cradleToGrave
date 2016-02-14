@@ -2,13 +2,13 @@
 
   "use strict";
 
-  var height, width, svg, pie, arc, arcs, processedData, outerRadius;
+  var height, width, svg, pie, arc, arcs, processedData, outerRadius, pieLabel;
  
   function getViewportDimensions () { 
     width = document.getElementById("pie").offsetWidth;
     height = window.innerHeight;
     drawSvg();
-  };
+  }
 
   getViewportDimensions();
 
@@ -35,7 +35,7 @@
       {name: "University", val: 1356747},  
       {name: "Work", val: 12510402},  
       {name: "Family", val: 15548302},
-      {name: "Family", val: 2592821}  
+      {name: "Retirement", val: 2592821}  
     ];
 
     var colourScale = d3.scale.linear()
@@ -56,7 +56,7 @@
       labelr = r + (height/35);
 
     arcs = donut.selectAll("g.arc") 
-      .data(pie.value(function(d) { return d.val }))
+      .data(pie.value(function(d) { return d.val; }))
       .enter()
       .append("g")
       .classed("pie", true)
@@ -86,18 +86,23 @@
           "fill": function(d,i) {
             return colourScale(d.value);
           },
-          "font-size" : "12px"
+          "font-size" : "10px"
         })
         .text(function(d) {
-          return d.data.name + ", " + d.value;
-        })
-            // amount
-    var pieLabel = arcs.append("svg:text")
-      .attr("dy", ".35em")
-      .attr("text-anchor", "middle")
-      .attr("transform", "translate(" + width/40 + "," + height/60 + ")")
-      .html("35,491,509.98 ل.ل");
+          return d.data.name;
+        });
 
+    pieLabel = arcs.append("svg:text")
+      .attr({
+        // "dy" : "0.35em",
+        "font-size" : "11px",
+        "text-anchor" : "middle",
+        "fill" : "#686868",
+        "transform" : function() {
+          return "translate(" + 0 + "," + height/70 + ")";
+        }
+      })
+      .html("Total: 35,491,509 ل.ل");
   }
 
   d3.select(window).on('resize', resize);

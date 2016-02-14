@@ -28,7 +28,7 @@
     }
    
     height = window.innerHeight;
-  };
+  }
 
   getViewportDimensions();
 
@@ -108,7 +108,7 @@
         "class" : function (d) {
           return d.Stage;
         }
-      })
+      });
 
     }
 
@@ -136,7 +136,7 @@
       processData(stage);
 
       // get the lowest and highest bribe amount 
-      var arrayOfAverageBribes = processedDataForRect.map(function(x){return x[1]})
+      var arrayOfAverageBribes = processedDataForRect.map(function(x){return x[1];});
       var min = d3.min(arrayOfAverageBribes);
       var max = d3.max(arrayOfAverageBribes);
 
@@ -148,7 +148,7 @@
 
       rectScale = d3.scale.linear()
         .domain([min, max])
-        .range([(width*0.01), (width*0.90)])
+        .range([(width*0.01), (width*0.90)]);
 
       rect = svg.selectAll("rect")
         .data(processedDataForRect);
@@ -179,7 +179,7 @@
         .attr({"width": function(d) {
             return rectScale(d[1]);
           }
-        })
+        });
 
       labelProcedure = svg.selectAll("text.labelProcedure")
         .data(processedDataForRect)
@@ -224,7 +224,7 @@
           'r' : function(d) {
             return bubbleScale(d.Avg);
           }
-        })
+        });
  
        svgCircles.selectAll("text")
           .attr({
@@ -236,7 +236,7 @@
           });
     
       rectScale
-        .range([(width*0.01), (width*0.90)])
+        .range([(width*0.01), (width*0.90)]);
 
       rect = svg.selectAll("g rect")
         .attr({
@@ -250,7 +250,7 @@
         .attr({"width": function(d) {
             return rectScale(d[1]);
           }
-        })
+        });
     }
 
 
