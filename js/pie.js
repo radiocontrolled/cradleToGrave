@@ -34,12 +34,12 @@
       {name: "School", val: 2077083},  
       {name: "University", val: 1356747},  
       {name: "Work", val: 12510402},  
-      {name: "Family", val: 15548302},
-      {name: "Retirement", val: 2592821}  
+      {name: "Family", val: 15173302},
+      {name: "Retirement", val: 2217821}  
     ];
 
     var colourScale = d3.scale.linear()
-      .domain([1406155,15548302])
+      .domain([1406155,15173302])
       .range(["#d91f2b","#6c0f15"]);
    
     outerRadius = width / 3.3;
@@ -102,11 +102,11 @@
           return "translate(" + 0 + "," + height/70 + ")";
         }
       })
-      .html("Total: 35,491,509 ل.ل");
+      .html("Total: 34,741,510 ل.ل");
   }
 
   drawPieChart();
-  
+
   d3.select(window).on('resize', resize);
 
   function resize() {

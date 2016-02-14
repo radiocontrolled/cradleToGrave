@@ -264,7 +264,7 @@
     var yTickLabels = [
       ["Cadastre", "c-0"],
       ["Car Registration", "c-1"],
-      ["Certification of Personal Documents (Marriage, Divorce...)", "c-2"],
+      ["Certification of Personal Documents", "c-2"],
       ["Civil Register Authentication", "c-3"],
       ["Cleaning of Judicial Record", "c-4"],
       ["Diploma Certification", "c-5"],
@@ -281,7 +281,7 @@
       ["Mecanique", "c-16"],
       ["Passport", "c-17"],
       ["Permit to issue an approval for foreigners' competency licence holders", "c-18"],
-      ["Redemption request a financial guarantee (certificate of deposit)", "c-19"],
+      ["Certificate of Deposit", "c-19"],
       ["Passport Renewal", "c-20"],
       ["Results of Official Examinations", "c-21"],
       ["Social Security Procedures", "c-22"],

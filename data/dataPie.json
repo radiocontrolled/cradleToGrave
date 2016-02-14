@@ -179,14 +179,10 @@
     "Procedure":"Civil Register Authentication",
     "Avg":48750
   },
+
   {
     "Stage":"family",
-    "Procedure":"Permit to issue an approval for foreigners' competency licence holders - 472",
-    "Avg":375000
-  },
-  {
-    "Stage":"family",
-    "Procedure":"Redemption request a financial guarantee (certificate of deposit) - 312",
+    "Procedure":"Certificate of Deposit - 312",
     "Avg":1500000
   },
   {
@@ -249,14 +245,10 @@
     "Procedure":"Document certification",
     "Avg":19071
   },
+
   {
     "Stage":"retirement",
-    "Procedure":"Permit to issue an approval for foreigners' competency licence holders - 472",
-    "Avg":375000
-  },
-  {
-    "Stage":"retirement",
-    "Procedure":"Redemption request a financial guarantee (certificate of deposit) - 312",
+    "Procedure":"Certificate of Deposit - 312",
     "Avg":1500000
   }
 ]

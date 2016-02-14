@@ -53,7 +53,7 @@
     if (error) console.warn(error);
     dataCircle = json;
     drawSvg();
-    // drawLegend();
+    drawLegend();
 
     // min/max values for horozontal scale
     min = d3.min(dataCircle, function(d) { return d.Avg; });
