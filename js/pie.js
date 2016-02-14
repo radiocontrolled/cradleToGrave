@@ -24,7 +24,7 @@
     svg = d3.select("#pie")
       .append("svg");
       setSvgSize();
-      drawPieChart();
+      
   }
 
   function drawPieChart() {
@@ -105,10 +105,13 @@
       .html("Total: 35,491,509 ل.ل");
   }
 
+  drawPieChart();
+  
   d3.select(window).on('resize', resize);
 
   function resize() {
 
+    console.log("pie resize");
     getViewportDimensions();
     setSvgSize();
 

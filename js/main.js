@@ -53,7 +53,7 @@
     if (error) console.warn(error);
     dataCircle = json;
     drawSvg();
-    drawLegend();
+    // drawLegend();
 
     // min/max values for horozontal scale
     min = d3.min(dataCircle, function(d) { return d.Avg; });
@@ -80,38 +80,38 @@
     }
   }
 
-  function visualiseCircles () {
+  // function visualiseCircles () {
 
-    xScale = d3.scale.linear()
-      .domain([5,0])
-      .range([width*0.8,0]);
+  //   xScale = d3.scale.linear()
+  //     .domain([5,0])
+  //     .range([width*0.8,0]);
 
-    bubbleScale = d3.scale.linear()
-      .domain([min,max])
-      .range([5,25]);    
+  //   bubbleScale = d3.scale.linear()
+  //     .domain([min,max])
+  //     .range([5,25]);    
 
-    svgCircles = svg.append("g")
-      .classed("circle-wrap", true);
+  //   svgCircles = svg.append("g")
+  //     .classed("circle-wrap", true);
 
-    svgCircles.selectAll("circle")
-      .data(dataCircle)
-      .enter()
-      .append("g")
-      .append("circle")
-      .attr({
-        "cx" : function(d,i) {
-          return xScale(i) + (width * 0.10);
-        },
-        "cy" : "92%",
-        'r' : function(d) {
-          return bubbleScale(d.Avg);
-        }, 
-        "class" : function (d) {
-          return d.Stage;
-        }
-      });
+  //   svgCircles.selectAll("circle")
+  //     .data(dataCircle)
+  //     .enter()
+  //     .append("g")
+  //     .append("circle")
+  //     .attr({
+  //       "cx" : function(d,i) {
+  //         return xScale(i) + (width * 0.10);
+  //       },
+  //       "cy" : "92%",
+  //       'r' : function(d) {
+  //         return bubbleScale(d.Avg);
+  //       }, 
+  //       "class" : function (d) {
+  //         return d.Stage;
+  //       }
+  //     });
 
-    }
+  //   }
 
     function remove (stage) {
       d3.selectAll("rect").remove();
@@ -227,46 +227,45 @@
           
     }
 
-    d3.select(window).on('resize', resize);
+   
 
-    function resize() {
+    var resize = function() {
+
+     
       getViewportDimensions();
       setSvgSize();
 
-     xScale 
-        .range([width*0.8,0]);
+     // xScale 
+     //    .range([width*0.8,0]);
 
-      bubbleScale
-        .range([5,25]);    
+     //  bubbleScale
+     //    .range([5,25]);    
 
-      svgCircles.selectAll("circle")
-        .attr({
-          "cx" : function(d,i) {
-            return xScale(i) + (width * 0.10);
-          },
-          "cy" : "10%",
-          'r' : function(d) {
-            return bubbleScale(d.Avg);
-          }
-        });
+      // svgCircles.selectAll("circle")
+      //   .attr({
+      //     "cx" : function(d,i) {
+      //       return xScale(i) + (width * 0.10);
+      //     },
+      //     "cy" : "10%",
+      //     'r' : function(d) {
+      //       return bubbleScale(d.Avg);
+      //     }
+      //   });
  
-       svgCircles.selectAll("text")
-          .attr({
-            "x" : function(d,i) {
-              return xScale(i)+ (width * 0.10);
-            },
-            "y" : "20%",
-            "text-anchor" : "middle"
-          });
+      //  svgCircles.selectAll("text")
+      //     .attr({
+      //       "x" : function(d,i) {
+      //         return xScale(i)+ (width * 0.10);
+      //       },
+      //       "y" : "20%",
+      //       "text-anchor" : "middle"
+      //     });
     
       rectScale
         .range([(width*0.01), (width*0.90)]);
 
-      rect = svg.selectAll("g rect")
+      rect = svg.selectAll("rect")
         .attr({
-          "y": function(d,i) {
-            return i * (height/15); 
-          }, 
           "width" : 0
         })
         .transition()
@@ -275,8 +274,12 @@
             return rectScale(d[1]);
           }
         });
-    }
 
+      labelProcedure = svg.selectAll("text.labelProcedure")
+        .attr("transform", "translate(" + 0 + "," + (height * 0.26)  + ")");
+   
+
+    };
 
    var swiperInit = function () {
      var swiper = new Swiper('.swiper-container', {
@@ -435,5 +438,7 @@
         }
       });
   }(); // calling swiperInit
+
+  jQuery(window).on('resize', resize);
 
 })();
