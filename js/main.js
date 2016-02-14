@@ -3,7 +3,7 @@
   "use strict";
 
   var height, width, svg, dataCircle, min, max, xScale, bubbleScale, svgCircles, dataRect, processedDataForRect, rect, rectScale,
-  labelAvg, labelProcedure, colourScale;
+  labelAvg, labelProcedure, colourScale, legendText, legendLine;
 
   var body = jQuery("body");
 
@@ -53,6 +53,7 @@
     if (error) console.warn(error);
     dataCircle = json;
     drawSvg();
+    drawLegend();
 
     // min/max values for horozontal scale
     min = d3.min(dataCircle, function(d) { return d.Avg; });
@@ -118,6 +119,30 @@
       d3.selectAll(".labelProcedure").remove();
     }
 
+    function drawLegend () {
+      legendText = svg.append("text")
+        .attr({
+          "id": "legend",
+          "font-size" : "10px",
+          "transform" : "translate(" + (width * 0.05) + "," + (height * 0.21)  + ")",
+          "fill" : "#989798"
+        })
+        .text("Avg. Bribe per Procedure");
+
+      legendLine = svg.append("line")
+        .attr({
+          "x1" : width * 0.00001, 
+          "y1" : 10, 
+          "y2" : 10, 
+          "x2" : width*0.90,
+          "transform" : "translate(" + (width * 0.05) + "," + (height * 0.20)  + ")",
+          "stroke" : "#989798",
+          "stroke-width" : "1px"
+        });
+    }
+
+    
+
     function visualiseBarChart (stage) {
     
       function processData (stage) {
@@ -145,7 +170,6 @@
       // console.log("stage: " + stage);
       // console.log("dataset: " + processedDataForRect);
 
-
       rectScale = d3.scale.linear()
         .domain([min, max])
         .range([(width*0.01), (width*0.90)]);
@@ -160,7 +184,7 @@
       rect
         .enter()
         .append("rect")
-        .attr("transform", "translate(" + (width * 0.05) + "," + (height * 0.23)  + ")")
+        .attr("transform", "translate(" + (width * 0.05) + "," + (height * 0.26)  + ")")
         .attr({
           "class" : function(d) {
             return d[0];
@@ -186,7 +210,7 @@
         .enter()
         .append("text")
         .classed("labelProcedure", true)
-        .attr("transform", "translate(" + 0 + "," + (height * 0.23)  + ")")
+        .attr("transform", "translate(" + 0 + "," + (height * 0.26)  + ")")
         .text(function(d,i){
           return d[2] + ", " + format(d[1]);
         })
