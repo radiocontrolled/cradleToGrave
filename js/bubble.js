@@ -36,7 +36,7 @@
 
 
     var yScale = d3.scale.linear()
-      .domain([25,0])
+      .domain([24,0])
       .range([(height * 0.8),0]);
 
     var bubbleScale = d3.scale.linear()
@@ -55,7 +55,7 @@
     var yAxis = d3.svg.axis()
       .scale(yScale)
       .orient("right")  
-      .ticks(25)
+      .ticks(24)
       .tickSize(-width * 0.5)
 
       .tickFormat(function(d,i){
@@ -280,14 +280,14 @@
       ["License for Commercial Enterprise", "c-15"],
       ["Mecanique", "c-16"],
       ["Passport", "c-17"],
-      ["Permit to issue an approval for foreigners' competency licence holders", "c-18"],
-      ["Certificate of Deposit", "c-19"],
-      ["Passport Renewal", "c-20"],
-      ["Results of Official Examinations", "c-21"],
-      ["Social Security Procedures", "c-22"],
-      ["Social Security Paperwok", "c-23"],
-      ["Subscription to Lebanese University", "c-24"],
-      ["Water Request", "c-25"]
+      // ["Permit to issue an approval for foreigners' competency licence holders", "c-18"],
+      ["Certificate of Deposit", "c-18"],
+      ["Passport Renewal", "c-19"],
+      ["Results of Official Examinations", "c-20"],
+      ["Social Security Procedures", "c-21"],
+      ["Social Security Paperwok", "c-22"],
+      ["Subscription to Lebanese University", "c-23"],
+      ["Water Request", "c-24"]
     ];
 
 
